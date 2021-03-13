@@ -1,4 +1,4 @@
-# Kotlin Ktor Example App
+# Kotlin Ktor Example
 
 | Branch        | Build           | Coverage           |
 | ------------- |:-------------:|:-------------:|
