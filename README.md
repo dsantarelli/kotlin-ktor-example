@@ -48,13 +48,13 @@ Testing:
 * [Gradle](https://gradle.org/)
 * [Java 11](https://www.oracle.com/it/java/technologies/javase-jdk11-downloads.html)
 
-The web is configured to start on port [8080](http://localhost:8080).
-
 Build:
 > ./gradlew clean build
 
 Start the application:
 > ./gradlew run
+
+The server is configured to start on port [8080](http://localhost:8080).
 
 Test:
 > ./gradlew test
