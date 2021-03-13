@@ -3,14 +3,14 @@ env:
     - CODECOV_TOKEN="47c832fb-b4e7-4987-b90e-4ffe8bcf0acc"
 
 language: java
+install: skip
 
-matrix:
-  include:
-    - os: linux
-      sudo: required
-      jdk: openjdk11
+os: linux
+dist: trusty
+jdk: openjdk11
 
-script: ./gradlew check --info --stacktrace --console=plain --max-workers=1 --no-daemon --build-cache -Dkotlin.colors.enabled=false
+script:
+  - ./gradlew clean build
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
