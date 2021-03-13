@@ -4,9 +4,9 @@ This codebase was created to demonstrate a REST API built with **Kotlin + Ktor +
 
 The application was built with:
 
-  - [Kotlin](https://github.com/JetBrains/kotlin) as programming language
-  - [Ktor](https://github.com/ktorio/ktor) as web framework
-  - [Kodein](https://github.com/Kodein-Framework/Kodein-DI) as dependency injection framework
+  - [Kotlin](https://kotlinlang.org/) as programming language
+  - [Ktor](https://ktor.io/) as web framework
+  - [Kodein](https://kodein.org/di/) as dependency injection framework
   - [Jackson](https://github.com/FasterXML/jackson-module-kotlin) as data bind serialization/deserialization    
   - [MapStruct](https://mapstruct.org/) as mapper between types (annotation processor)
   - [HikariCP](https://github.com/brettwooldridge/HikariCP) as datasource to abstract driver implementation
