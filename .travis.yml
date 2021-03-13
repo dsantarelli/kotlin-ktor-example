@@ -1,6 +1,6 @@
 env:
   global:
-    - CODECOV_TOKEN='47c832fb-b4e7-4987-b90e-4ffe8bcf0acc'
+    - CODECOV_TOKEN="47c832fb-b4e7-4987-b90e-4ffe8bcf0acc"
 
 language: java
 os: linux
