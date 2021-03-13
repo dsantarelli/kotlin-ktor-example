@@ -3,13 +3,12 @@ env:
     - CODECOV_TOKEN="47c832fb-b4e7-4987-b90e-4ffe8bcf0acc"
 
 language: java
-
-before_install:
- - chmod +x gradlew
-
 os: linux
 dist: trusty
 jdk: openjdk11
+
+before_install:
+  - chmod +x gradlew
 
 script:
   - ./gradlew clean build
