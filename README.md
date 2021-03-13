@@ -1,5 +1,10 @@
 # Kotlin Ktor Example App
 
+| Branch        | Build           | Coverage           |
+| ------------- |:-------------:|:-------------:|
+| main      	| [![Build Status](https://travis-ci.com/dsantarelli/kotlin-ktor-example-app.svg?branch=main)](https://travis-ci.com/github/dsantarelli/kotlin-ktor-example-app) | [![codecov](https://codecov.io/gh/dsantarelli/kotlin-ktor-example-app/branch/main/graph/badge.svg)](https://codecov.io/gh/dsantarelli/kotlin-ktor-example-app)
+
+
 This codebase was created to demonstrate a REST API built with **Kotlin + Ktor + Kodein + Exposed** including CRUD operations, routing, dependency config and more.
 
 The application was built with:
