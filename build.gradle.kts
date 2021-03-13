@@ -60,6 +60,10 @@ tasks.test {
 
 tasks.jacocoTestReport {
     dependsOn(tasks.test)
+    reports {
+        html.isEnabled = true
+        xml.isEnabled = true
+    }
 }
 
 application {
