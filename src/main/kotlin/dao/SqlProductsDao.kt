@@ -21,8 +21,8 @@ class SqlProductsDao(private val db: Database) : ProductsDao {
             it[ProductsTable.title] = title
             it[ProductsTable.description] = description
             it[ProductsTable.price] = price
-            it[ProductsTable.creationDateTime] = epochMilli
-            it[ProductsTable.lastUpdateDateTime] = epochMilli
+            it[ProductsTable.creationTimestamp] = epochMilli
+            it[ProductsTable.lastUpdateTimestamp] = epochMilli
         }
         id
     }
@@ -32,7 +32,7 @@ class SqlProductsDao(private val db: Database) : ProductsDao {
             it[ProductsTable.title] = title
             it[ProductsTable.description] = description
             it[ProductsTable.price] = price
-            it[ProductsTable.lastUpdateDateTime] = Instant.now().toEpochMilli()
+            it[ProductsTable.lastUpdateTimestamp] = Instant.now().toEpochMilli()
         }
         Unit
     }
@@ -61,8 +61,8 @@ class SqlProductsDao(private val db: Database) : ProductsDao {
             it[ProductsTable.title],
             it[ProductsTable.description],
             it[ProductsTable.price],
-            Instant.ofEpochMilli(it[ProductsTable.creationDateTime]),
-            Instant.ofEpochMilli(it[ProductsTable.lastUpdateDateTime])
+            Instant.ofEpochMilli(it[ProductsTable.creationTimestamp]),
+            Instant.ofEpochMilli(it[ProductsTable.lastUpdateTimestamp])
         )
     }
 }

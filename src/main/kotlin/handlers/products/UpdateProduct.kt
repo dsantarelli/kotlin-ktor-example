@@ -20,7 +20,6 @@ class UpdateProduct(private val dao: ProductsDao, private val mapper: ProductMap
                 description = request.description,
                 price = request.price
             )
-
             return UpdateProductResponse(mapper.map(dao.getProduct(productId)!!))
         }
     }

@@ -15,7 +15,6 @@ class CreateProduct(private val dao: ProductsDao, private val mapper: ProductMap
             description = request.description,
             price = request.price,
         )
-
         return CreateProductResponse(mapper.map(dao.getProduct(id)!!))
     }
 }
