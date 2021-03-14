@@ -4,6 +4,7 @@ import handlers.RequestHandlerFactory
 import io.ktor.application.*
 import io.ktor.features.*
 import io.ktor.jackson.*
+import io.ktor.locations.*
 import io.ktor.routing.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
@@ -14,6 +15,8 @@ import org.slf4j.event.Level
 
 fun Application.setup(db: Database) {
     startKoin { modules(config.setup(db)) }
+    install(DefaultHeaders)
+    install(Locations)
     install(CallLogging) { level = Level.INFO }
     install(ContentNegotiation) { jackson() }
     install(StatusPages) { setup() }

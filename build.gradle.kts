@@ -1,9 +1,8 @@
 group = "com.ktor.example"
 version = "1.0.0"
 
+val ktorVersion = "1.5.2"
 val jupiterVersion = "5.6.0"
-val ktorVersion = "1.4.0"
-val ktorServerTest = "1.5.2"
 val mapStructVersion = "1.4.2.Final"
 val jacksonKotlinVersion = "2.12.0"
 val logbackClassicVersion = "1.2.3"
@@ -30,18 +29,19 @@ dependencies {
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:$jupiterVersion")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$jupiterVersion")
-    testImplementation("io.ktor:ktor-server-tests:$ktorServerTest")
-    testImplementation("io.ktor:ktor-server-test-host:$ktorServerTest")
+    testImplementation("io.ktor:ktor-server-tests:$ktorVersion")
+    testImplementation("io.ktor:ktor-server-test-host:$ktorVersion")
 
+    implementation("io.ktor:ktor-server-netty:$ktorVersion")
+    implementation("io.ktor:ktor-locations:$ktorVersion")
+    implementation("io.ktor:ktor-jackson:$ktorVersion")
     implementation("org.mapstruct:mapstruct:$mapStructVersion")
     kapt("org.mapstruct:mapstruct-processor:$mapStructVersion")
-    implementation("io.ktor:ktor-jackson:$ktorVersion")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonKotlinVersion")
     implementation("ch.qos.logback:logback-classic:$logbackClassicVersion")
     implementation("com.zaxxer:HikariCP:$hikariVersion")
     implementation("com.h2database:h2:$h2DatabaseVersion")
     implementation("org.jetbrains.exposed:exposed:$exposedVersion")
-    implementation("io.ktor:ktor-server-netty:$ktorVersion")
     implementation("org.koin:koin-core:$koinVersion")
 }
 
@@ -63,6 +63,7 @@ tasks.jacocoTestReport {
     reports {
         html.isEnabled = true
         xml.isEnabled = true
+        csv.isEnabled = false
     }
 }
 

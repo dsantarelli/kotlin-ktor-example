@@ -14,7 +14,7 @@ import io.ktor.routing.*
 fun Route.productsController(handlerFactory: ProductsRequestHandlerFactory) = route("/products") {
 
     get {
-        call.respond(mapOf("products" to handlerFactory.getAllProducts().handle(GetAllProductsRequest()).products))
+        call.respond(handlerFactory.getAllProducts().handle(GetAllProductsRequest()))
     }
 
     get("/{id}") {
