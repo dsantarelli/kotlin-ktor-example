@@ -12,12 +12,12 @@ The application was built with:
   - [Kotlin](https://kotlinlang.org/) as programming language
   - [Ktor](https://ktor.io/) as web framework
   - [Kodein](https://kodein.org/di/) as dependency injection framework
-  - [Jackson](https://github.com/FasterXML/jackson-module-kotlin) as data bind serialization/deserialization    
+  - [Jackson](https://github.com/FasterXML/jackson-module-kotlin) as data bind serialization/deserialization library
   - [MapStruct](https://mapstruct.org/) as mapper between types (annotation processor)
   - [HikariCP](https://github.com/brettwooldridge/HikariCP) as datasource to abstract driver implementation
-  - [H2](https://github.com/h2database/h2database) as database
+  - [H2](https://github.com/h2database/h2database) as in-memory database
   - [Exposed](https://github.com/JetBrains/Exposed) as ORM framework
-  - [Netty](https://netty.io/) as embedded web
+  - [Netty](https://netty.io/) as embedded application server
   
 Testing:
  
