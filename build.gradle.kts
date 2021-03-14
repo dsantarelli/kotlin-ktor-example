@@ -4,7 +4,7 @@ version = "1.0.0"
 val ktorVersion = "1.5.2"
 val jupiterVersion = "5.6.0"
 val mapStructVersion = "1.4.2.Final"
-val jacksonKotlinVersion = "2.12.0"
+val jacksonKotlinVersion = "2.12.2"
 val logbackClassicVersion = "1.2.3"
 val hikariVersion = "4.0.3"
 val h2DatabaseVersion = "1.4.200"
@@ -38,6 +38,7 @@ dependencies {
     implementation("org.mapstruct:mapstruct:$mapStructVersion")
     kapt("org.mapstruct:mapstruct-processor:$mapStructVersion")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonKotlinVersion")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonKotlinVersion")
     implementation("ch.qos.logback:logback-classic:$logbackClassicVersion")
     implementation("com.zaxxer:HikariCP:$hikariVersion")
     implementation("com.h2database:h2:$h2DatabaseVersion")

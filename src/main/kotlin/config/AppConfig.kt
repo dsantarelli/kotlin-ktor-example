@@ -18,11 +18,18 @@ fun Application.setup(db: Database) {
     install(DefaultHeaders)
     install(Locations)
     install(CallLogging) { level = Level.INFO }
-    install(ContentNegotiation) { jackson() }
+    install(ContentNegotiation) { jackson { setup() } }
     install(StatusPages) { setup() }
     install(Routing) { setup(inject(RequestHandlerFactory::class.java).value) }
 }
 
 fun setupServer() = embeddedServer(Netty, System.getenv("PORT")?.toInt() ?: 8080) {
-    setup(DbConfig.setup("jdbc:h2:mem:applicationDB;DB_CLOSE_DELAY=-1;", "", ""))
+    setup(
+        DbConfig.setup(
+            jdbcUrl = "jdbc:h2:mem:applicationDB;DB_CLOSE_DELAY=-1;",
+            username = "",
+            password = "",
+            driverClassName = "org.h2.Driver"
+        )
+    )
 }

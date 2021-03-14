@@ -7,7 +7,9 @@ import handlers.products.response.Product
 import io.ktor.http.*
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import java.time.Instant
 import java.util.*
+import kotlin.concurrent.thread
 
 class ProductsControllerTest : AppTestBase() {
 
@@ -32,6 +34,9 @@ class ProductsControllerTest : AppTestBase() {
             assertEquals("Title", product.title)
             assertEquals("Description", product.description)
             assertEquals(10.5, product.price)
+            assertNotNull(product.creationDateTime)
+            assertNotNull(product.lastUpdateDateTime)
+            assertEquals(product.creationDateTime, product.lastUpdateDateTime)
         }
     }
 
@@ -56,6 +61,9 @@ class ProductsControllerTest : AppTestBase() {
             assertEquals("Title", product["title"])
             assertEquals("Description", product["description"])
             assertEquals(10.5, product["price"])
+            assertNotNull(product["creationDateTime"])
+            assertNotNull(product["lastUpdateDateTime"])
+            assertEquals(product["creationDateTime"], product["lastUpdateDateTime"])
         }
     }
 
@@ -77,31 +85,37 @@ class ProductsControllerTest : AppTestBase() {
             assertEquals("Title", product.title)
             assertEquals("Description", product.description)
             assertEquals(10.5, product.price)
+            assertNotNull(product.creationDateTime)
+            assertNotNull(product.lastUpdateDateTime)
+            assertEquals(product.creationDateTime, product.lastUpdateDateTime)
         }
     }
 
     @Test
     fun `should update a product`() = withTestApp {
-        var productId: String? = null
+        var createdProduct: Product? = null
 
         withCreateProduct(CreateProductRequest("Title", "Description", 10.5)) {
             assertEquals(HttpStatusCode.Created, it.status())
-            val product = serializer.readValue(it.content, Product::class.java)
-            productId = product.id
-            assertNotNull(productId)
+            createdProduct = serializer.readValue(it.content, Product::class.java)
+            assertNotNull(createdProduct!!.id)
         }
 
-        withUpdateProduct(UpdateProductRequest(productId, "Title 2", "Description 2", 11.5)) {
+        Thread.sleep(50)
+
+        withUpdateProduct(UpdateProductRequest(createdProduct!!.id, "Title 2", "Description 2", 11.5)) {
             assertEquals(HttpStatusCode.OK, it.status())
         }
 
-        withGetProduct(productId!!) {
+        withGetProduct(createdProduct!!.id) {
             assertEquals(HttpStatusCode.OK, it.status())
-            val product = serializer.readValue(it.content, Product::class.java)
-            assertEquals(productId, product.id)
-            assertEquals("Title 2", product.title)
-            assertEquals("Description 2", product.description)
-            assertEquals(11.5, product.price)
+            val updatedProduct = serializer.readValue(it.content, Product::class.java)
+            assertEquals(createdProduct!!.id, updatedProduct.id)
+            assertEquals("Title 2", updatedProduct.title)
+            assertEquals("Description 2", updatedProduct.description)
+            assertEquals(11.5, updatedProduct.price)
+            assertEquals(createdProduct!!.creationDateTime, updatedProduct.creationDateTime)
+            assertTrue(updatedProduct.lastUpdateDateTime.isAfter(createdProduct!!.lastUpdateDateTime))
         }
     }
 

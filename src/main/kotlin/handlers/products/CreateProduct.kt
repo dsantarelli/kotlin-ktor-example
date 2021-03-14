@@ -13,7 +13,7 @@ class CreateProduct(private val dao: ProductsDao, private val mapper: ProductMap
         val id = dao.createProduct(
             title = request.title,
             description = request.description,
-            price = request.price
+            price = request.price,
         )
 
         return CreateProductResponse(mapper.map(dao.getProduct(id)!!))

@@ -4,6 +4,7 @@ import com.ktor.example.dao.model.Product
 import dao.tables.ProductsTable
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
+import java.time.Instant
 import java.util.*
 
 class SqlProductsDao(private val db: Database) : ProductsDao {
@@ -14,11 +15,14 @@ class SqlProductsDao(private val db: Database) : ProductsDao {
 
     override fun createProduct(title: String, description: String, price: Double): String = transaction(db) {
         val id = UUID.randomUUID().toString()
+        val epochMilli = Instant.now().toEpochMilli()
         ProductsTable.insert {
             it[ProductsTable.id] = id
             it[ProductsTable.title] = title
             it[ProductsTable.description] = description
             it[ProductsTable.price] = price
+            it[ProductsTable.creationDateTime] = epochMilli
+            it[ProductsTable.lastUpdateDateTime] = epochMilli
         }
         id
     }
@@ -28,6 +32,7 @@ class SqlProductsDao(private val db: Database) : ProductsDao {
             it[ProductsTable.title] = title
             it[ProductsTable.description] = description
             it[ProductsTable.price] = price
+            it[ProductsTable.lastUpdateDateTime] = Instant.now().toEpochMilli()
         }
         Unit
     }
@@ -55,7 +60,9 @@ class SqlProductsDao(private val db: Database) : ProductsDao {
             it[ProductsTable.id],
             it[ProductsTable.title],
             it[ProductsTable.description],
-            it[ProductsTable.price]
+            it[ProductsTable.price],
+            Instant.ofEpochMilli(it[ProductsTable.creationDateTime]),
+            Instant.ofEpochMilli(it[ProductsTable.lastUpdateDateTime])
         )
     }
 }

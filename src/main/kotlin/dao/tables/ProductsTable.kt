@@ -7,4 +7,6 @@ object ProductsTable : Table() {
     val title = varchar("title", 255)
     val description = varchar("description", 255)
     val price = double("price")
+    val creationDateTime = long("creationDateTime")
+    val lastUpdateDateTime = long("lastUpdateDateTime")
 }
