@@ -11,7 +11,7 @@ class UpdateProduct(private val dao: ProductsDao, private val mapper: ProductMap
 
     override fun handle(request: UpdateProductRequest): UpdateProductResponse {
         val productId = request.id!!
-        val product = dao.getProduct(productId);
+        val product = dao.getProduct(productId)
         return if (product == null) UpdateProductResponse(null)
         else {
             dao.updateProduct(

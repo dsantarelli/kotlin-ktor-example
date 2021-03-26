@@ -6,8 +6,8 @@ import handlers.products.response.*
 
 interface ProductsRequestHandlerFactory {
     fun getAllProducts(): RequestHandler<GetAllProductsRequest, GetProductsResponse>
-    fun getProduct(): RequestHandler<GetProductByIdRequest, GetProductByIdResponse>
+    fun getProduct(): RequestHandler<GetProductRequest, GetProductResponse>
     fun createProduct(): RequestHandler<CreateProductRequest, CreateProductResponse>
     fun updateProduct(): RequestHandler<UpdateProductRequest, UpdateProductResponse>
-    fun deleteProduct(): RequestHandler<DeleteProductByIdRequest, DeleteProductByIdResponse>
+    fun deleteProduct(): RequestHandler<DeleteProductRequest, DeleteProductResponse>
 }

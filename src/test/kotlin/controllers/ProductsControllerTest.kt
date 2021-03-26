@@ -7,9 +7,7 @@ import handlers.products.response.Product
 import io.ktor.http.*
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
-import java.time.Instant
 import java.util.*
-import kotlin.concurrent.thread
 
 class ProductsControllerTest : AppTestBase() {
 

@@ -1,9 +1,9 @@
 package controllers
 
 import handlers.products.ProductsRequestHandlerFactory
-import handlers.products.request.DeleteProductByIdRequest
+import handlers.products.request.DeleteProductRequest
 import handlers.products.request.GetAllProductsRequest
-import handlers.products.request.GetProductByIdRequest
+import handlers.products.request.GetProductRequest
 import handlers.products.request.UpdateProductRequest
 import io.ktor.application.*
 import io.ktor.http.*
@@ -19,7 +19,7 @@ fun Route.productsController(handlerFactory: ProductsRequestHandlerFactory) = ro
 
     get("/{id}") {
         val id = call.parameters["id"]
-        val product = handlerFactory.getProduct().handle(GetProductByIdRequest(id!!)).product
+        val product = handlerFactory.getProduct().handle(GetProductRequest(id!!)).product
         if (product != null) call.respond(product)
         else call.respond(HttpStatusCode.NotFound)
     }
@@ -40,7 +40,7 @@ fun Route.productsController(handlerFactory: ProductsRequestHandlerFactory) = ro
 
     delete("/{id}") {
         val id = call.parameters["id"]
-        val deleted = handlerFactory.deleteProduct().handle(DeleteProductByIdRequest(id!!)).deleted
+        val deleted = handlerFactory.deleteProduct().handle(DeleteProductRequest(id!!)).deleted
         if (deleted) call.respond(HttpStatusCode.NoContent)
         else call.respond(HttpStatusCode.NotFound)
     }

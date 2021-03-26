@@ -14,8 +14,8 @@ class ProductsRequestHandlerFactoryImpl(
     override fun getAllProducts(): RequestHandler<GetAllProductsRequest, GetProductsResponse> =
         GetAllProducts(dao, mapper)
 
-    override fun getProduct(): RequestHandler<GetProductByIdRequest, GetProductByIdResponse> =
-        GetProductById(dao, mapper)
+    override fun getProduct(): RequestHandler<GetProductRequest, GetProductResponse> =
+        GetProduct(dao, mapper)
 
     override fun createProduct(): RequestHandler<CreateProductRequest, CreateProductResponse> =
         CreateProduct(dao, mapper)
@@ -23,6 +23,6 @@ class ProductsRequestHandlerFactoryImpl(
     override fun updateProduct(): RequestHandler<UpdateProductRequest, UpdateProductResponse> =
         UpdateProduct(dao, mapper)
 
-    override fun deleteProduct(): RequestHandler<DeleteProductByIdRequest, DeleteProductByIdResponse> =
-        DeleteProductById(dao)
+    override fun deleteProduct(): RequestHandler<DeleteProductRequest, DeleteProductResponse> =
+        DeleteProduct(dao)
 }

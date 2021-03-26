@@ -8,11 +8,14 @@ import org.koin.core.context.stopKoin
 import java.util.*
 
 private fun Application.testAppSetup() {
-    setup(DbConfig.setup(
-        jdbcUrl = "jdbc:h2:mem:db-${UUID.randomUUID()};DB_CLOSE_DELAY=-1;",
-        username = "",
-        password = "",
-        driverClassName = "org.h2.Driver"))
+    setup(
+        DbConfig.setup(
+            jdbcUrl = "jdbc:h2:mem:db-${UUID.randomUUID()};DB_CLOSE_DELAY=-1;",
+            username = "",
+            password = "",
+            driverClassName = "org.h2.Driver"
+        )
+    )
 }
 
 abstract class AppTestBase {

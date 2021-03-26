@@ -3,6 +3,7 @@ version = "1.0.0"
 
 val ktorVersion = "1.5.2"
 val jupiterVersion = "5.6.0"
+val mockitoKotlinVersion = "2.2.11"
 val mapStructVersion = "1.4.2.Final"
 val jacksonKotlinVersion = "2.12.2"
 val logbackClassicVersion = "1.2.3"
@@ -31,6 +32,7 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$jupiterVersion")
     testImplementation("io.ktor:ktor-server-tests:$ktorVersion")
     testImplementation("io.ktor:ktor-server-test-host:$ktorVersion")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:$mockitoKotlinVersion")
 
     implementation("io.ktor:ktor-server-netty:$ktorVersion")
     implementation("io.ktor:ktor-locations:$ktorVersion")

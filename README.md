@@ -22,6 +22,7 @@ The application was built with:
 Testing:
  
   - [JUnit 5](https://junit.org/junit5/)
+  - [mockito-kotlin](https://github.com/mockito/mockito-kotlin) to work with [Mockito](https://site.mockito.org/) in Kotlin
   - [ktor-web-test](https://ktor.io/docs/testing.html) to call endpoints in the integration tests
   - [jacoco](https://www.eclemma.org/jacoco/) as code coverage library
  
